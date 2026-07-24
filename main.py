@@ -31,16 +31,31 @@ def create_excerpts(text, size=200):
 def text_to_speach(excerpt):
     tts.tts_to_file(text=excerpt, speaker_wav="84-121123-0002.flac", language="en", file_path="/Users/sagebuilder09/Documents/GitHub/ProjectInsanity/audio/output.wav")
 
-random_book = random.randint(1, 10000)
+while True:
+    random_book = random.randint(1, 10000)
+        
+    book = search_book(random_book)
+    excerpt = create_excerpts(book.text)
 
-print(random_book)
+    try:
+        print(excerpt[5])
+    except:
+        continue
 
-book = search_book(random_book)
-excerpt = create_excerpts(book.text)
+    break
 
-random_audio = random.randint(1, 10000)
+while True:
+    random_audio = random.randint(1, 10000)
+        
+    audio_book = search_book(random_audio)
+    audio_excerpt = create_excerpts(audio_book.text)
 
-audio_book = search_book(random_audio)
-audio_excerpt = create_excerpts(audio_book.text)
+    try:
+        print(audio_excerpt[5])
+    except:
+        continue
+
+    break
 
 text_to_speach(audio_excerpt[5])
+print(excerpt[5])
